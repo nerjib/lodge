@@ -1,0 +1,82 @@
+
+.reservation-page {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .reservation-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+  }
+  
+  .form-group textarea {
+    height: 100px;
+  }
+  
+  .reservation-page button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .reservation-page button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  .header-content {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center content */
+    justify-content: space-around; /* Distribute space between logo and nav */
+    max-width: 100%; /* Optional: set a max width for better layout on larger screens */
+    margin: 0 auto;
+  }
+  
+  .logo-link{
+      display: flex;
+      align-items: center;
+  }
+  
+  .logo {
+    max-height: 80px; /* Adjust the height as needed */
+    margin-right: 20px; /* Add some spacing between logo and title */
+  }
+  
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  .content-section {
+    max-width: 960px;
+    margin: 0 auto;
+}
