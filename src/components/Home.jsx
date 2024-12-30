@@ -3,18 +3,12 @@ import './App.css';
 import img1 from '../assets/front1.jpg'
 import img2 from '../assets/front2.jpg'
 import img3 from '../assets/front3.jpg'
-import room1 from '../assets/room1.jpg'
-import room2 from '../assets/room2.jpg'
-import room3 from '../assets/room3.jpg'
-import room4 from '../assets/room4.jpg'
-import room5 from '../assets/room5.jpg'
-import room6 from '../assets/room6.jpg'
-import room7 from '../assets/room7.jpg'
+import img4 from '../assets/sitting1.jpg'
+
 
 
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState('home');
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     { image: img1, alt: 'Lodge View 1', caption: 'Breathtaking Mountain Views' },
@@ -22,42 +16,6 @@ const Home = () => {
     { image: img3, alt: 'Lodge View 3', caption: 'Relaxing Outdoor Patio' },
   ];
 
-  const rooms = [{
-    name: 'Standard Room',
-    description: 'Cozy room with a queen-sized bed.',
-    image: room1,
-    price: 40000
-  },
-  {
-    name: 'Deluxe Suite',
-    description: 'Spacious suite with a king-sized bed and a fireplace.',
-    image: room2,
-    price: 60000
-  },
-  {
-    name: 'Deluxe Suite',
-    description: 'Spacious suite with a king-sized bed and a fireplace.',
-    image: room3,
-    price: 60000
-  },
-  {
-    name: 'Deluxe Suite',
-    description: 'Spacious suite with a king-sized bed and a fireplace.',
-    image: room4,
-    price: 60000
-  },
-  {
-    name: 'Deluxe Suite',
-    description: 'Spacious suite with a king-sized bed and a fireplace.',
-    image: room7,
-    price: 60000
-  }
-];
-
-function handleBooking(roomName){
-  alert(`Booking for ${roomName} is in progress.`) // Replace with your booking logic
-  // You could redirect to a booking page, open a modal, etc.
-}
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,17 +25,12 @@ function handleBooking(roomName){
     return () => clearInterval(interval); // Clear interval on unmount
   }, [slides.length]);
 
-  const handleTabClick = (tab) => {
-    setActiveTab(tab);
-  };
-
   const goToSlide = (index) => {
     setCurrentSlide(index);
   };
   return (
     <div className="app-container">
       <main>
-        {activeTab === 'home' && (
           <section className="content-section">
             <div className="hero-carousel">
               <div className="carousel-slides" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
@@ -98,50 +51,49 @@ function handleBooking(roomName){
                 ))}
               </div>
             </div>
-            <h2>Welcome to Serene Tranquility Lodge</h2>
-            <p>Escape to the tranquility of the mountains. Our lodge offers comfortable accommodations, breathtaking views, and a relaxing atmosphere.</p>
-            {/* ... rest of the home section */}
-          </section>
-        )}
+            <div className="home-content"> {/* Added container for home page content */}
+                  <section className="welcome-section">
+                    <h2>Welcome to Tranquility Lodge</h2>
+                    <p>Nestled in the heart of Kaduna Millenium City, Tranquility Lodge offers an unforgettable escape from the everyday. Our cozy lodge provides the perfect blend of rustic charm and modern amenities, ensuring a relaxing and rejuvenating stay.</p>
+                    <p>Whether you're seeking adventure on the trails, a peaceful retreat by the fire, or simply a breathtaking view from your window, you'll find it all here. Our dedicated staff is committed to providing exceptional service and creating a memorable experience for each of our guests.</p>
+                  </section>
 
-        {activeTab === 'rooms' && (
-          <section className="content-section">
-            <h2>Our Rooms & Suites</h2>
-            <div className="room-grid">
-              {(rooms || []).map((room, index) => (
-                <div className="room" key={index}>
-                  <h3>{room.name}</h3>
-                  <p>{room.description}</p>
-                  {/* Add room images and details */}
-                  <img src={room.image} alt={room.name} width="400"/>
-                  <p className="room-price">{room.price}</p> {/* Display price */}
-                  <button className="book-button" onClick={() => handleBooking(room.name)}> {/* Booking button */}
-                    Book Now
-                  </button>
+                  <section className="featured-experiences">
+                    <h2>Featured Experiences</h2>
+                    <div className="experience-grid">
+                      {/* <div className="experience">
+                        <img src="hiking.jpg" alt="Hiking" />
+                        <h3>Hiking & Nature Trails</h3>
+                        <p>Explore the stunning natural beauty of the surrounding mountains with our well-maintained hiking trails. From leisurely strolls to challenging climbs, there's a trail for every level.</p>
+                      </div> */}
+                      <div className="experience">
+                        <img src={img4} alt="Relaxation" />
+                        <h3>Relaxation & Wellness</h3>
+                        <p>Unwind and rejuvenate in our tranquil setting. Enjoy a soothing massage, relax by the fireplace, or simply soak in the peaceful atmosphere.</p>
+                      </div>
+                      <div className="experience">
+                        <img src={img4} alt="Dining" />
+                        <h3>Fine Dining</h3>
+                        <p>Savor delectable cuisine prepared with fresh, local ingredients in our on-site restaurant. Our menu features a variety of dishes to satisfy every palate.</p>
+                      </div>
+                    </div>
+                  </section>
+
+                  <section className="testimonials">
+                    <h2>What Our Guests Say</h2>
+                    <div className="testimonial-grid">
+                      <div className="testimonial">
+                        <p>"Absolutely stunning location and incredibly friendly staff. We had a wonderful time and can't wait to return!" - Awwal Salis</p>
+                      </div>
+                      <div className="testimonial">
+                        <p>"The perfect place to escape and recharge. The views are breathtaking, and the lodge is so cozy and comfortable." - Aliyu Skillz</p>
+                      </div>
+                    </div>
+                  </section>
                 </div>
-              ))}
-            </div>
-          </section>
-        )}
 
-        {activeTab === 'amenities' && (
-          <section className="content-section">
-            <h2>Our Amenities</h2>
-            <ul>
-              <li>Free Wi-Fi</li>
-              <li>On-site Restaurant</li>
-              <li>Swimming Pool</li>
-              <li>Hiking Trails</li>
-            </ul>
-          </section>
-        )}
-
-        {activeTab === 'contact' && (
-          <section className="content-section">
-            <h2>Contact Us</h2>
-            <p>6 Apo Road<br/>Millenium City, Kaduna State<br/>Phone: (+234)80xxxxx</p>
-          </section>
-        )}
+          </section>          
+                 
       </main>
     </div>
   );
