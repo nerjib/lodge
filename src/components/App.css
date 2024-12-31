@@ -42,7 +42,7 @@ main {
 
 .room-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive grid */
     gap: 20px;
 }
 
@@ -194,4 +194,55 @@ footer {
 
 .mobile-menu-toggle {
     display: none;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.social-links {
+  display: flex;
+  gap: 20px; /* Adjust spacing between icons */
+}
+
+.social-links a {
+  color: white; /* Icon color */
+  font-size: 20px; /* Icon size */
+  text-decoration: none; /* Remove underlines from links */
+}
+
+.social-links a:hover {
+  color: #ddd; /* Hover color */
+}
+
+/* Make footer responsive */
+@media (max-width: 768px){
+    .footer-content{
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}
+
+.availability-message {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.availability-message.available {
+  color: green;
+}
+
+.availability-message.unavailable {
+  color: red;
 }

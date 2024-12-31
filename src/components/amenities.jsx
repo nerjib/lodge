@@ -12,9 +12,22 @@ const Amenities = () => {
             <h2>Our Amenities</h2>
             <ul>
               <li>Free Wi-Fi</li>
-              <li>On-site Restaurant</li>
-              <li>Swimming Pool</li>
-              <li>Hiking Trails</li>
+              <li>24/7 Electricity (Inverter & Generator)</li>
+              <li>Complimentary Breakfast</li>
+              <li>Event Space for Small Gathering</li>
+              <li>Smart TV</li>
+              <li>Netflix</li>
+              <li>DSTV</li>
+              <li>Mini Fridge</li>
+             <li>Laundry Service</li>
+             <li>House Keeping</li>
+             <li>24/7 Security</li>
+             <li>Fully Equipped Kitchen</li>
+            <li>Parking Space</li>
+            <li>Inhouse Chefs</li>
+            <li>Discount available for longer stay</li>
+            <li>Air Conditioned Rooms</li>
+            <li>Indoor/Outdoor Relaxation Area</li>
             </ul>
           </section>
       </main>

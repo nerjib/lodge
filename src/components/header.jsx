@@ -32,11 +32,10 @@ const Header = () => {
                 <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
                 <Link to="/reservation" onClick={() => setIsMobileMenuOpen(false)}>Reservation</Link>
             </nav>
-            <button style={{color: 'red'}} className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+            <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
                 <div className="bar"></div>
                 <div className="bar"></div>
                 <div className="bar"></div>
-                jjjjjjjjjjjjjjj
             </button>
         </div>
         </header>

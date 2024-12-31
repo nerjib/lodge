@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.css';
+import { useSearchParams } from 'react-router-dom';
 
 const ReservationPage = () => {
+  const [searchParams] = useSearchParams(); // Get URL parameters
+  const roomName = searchParams.get('room'); // Get the room parameter
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,10 +12,9 @@ const ReservationPage = () => {
     checkIn: '',
     checkOut: '',
     guests: 1,
-    roomType: '',
+    roomType: roomName || '', // Set room type from URL parameter
     specialRequests: '',
   });
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -35,9 +37,14 @@ const ReservationPage = () => {
       });
   };
 
+  useEffect(() => {
+    // Update roomType if the URL parameter changes
+    setFormData(prevFormData => ({ ...prevFormData, roomType: roomName || '' }));
+  }, [roomName]);
   return (
     <div className="reservation-page">
       <h2>Make a Reservation</h2>
+      {roomName && <h3>You are booking: {roomName}</h3>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -65,11 +72,13 @@ const ReservationPage = () => {
         </div>
         <div className="form-group">
           <label htmlFor="roomType">Room Type:</label>
-          <select id="roomType" name="roomType" value={formData.roomType} onChange={handleChange} required>
+          <select id="roomType" name="roomType" value={formData.roomType} onChange={handleChange} required disabled={roomName}>
             <option value="">Select a room type</option>
-            <option value="standard">Standard Room</option>
-            <option value="deluxe">Deluxe Suite</option>
-            <option value="family">Family Suite</option>
+            <option value="Standard Room">Standard Room</option>
+            <option value="Deluxe Suite 1">Deluxe Suite 1</option>
+            <option value="Deluxe Suite 2">Deluxe Suite 2</option>
+            <option value="Deluxe Suite 3">Deluxe Suite 3</option>
+            <option value="King Suite">King Suite</option>
           </select>
         </div>
         <div className="form-group">

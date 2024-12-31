@@ -4,6 +4,8 @@ import img1 from '../assets/front1.jpg'
 import img2 from '../assets/front2.jpg'
 import img3 from '../assets/front3.jpg'
 import img4 from '../assets/sitting1.jpg'
+import img5 from '../assets/kitc1.jpg'
+
 
 
 
@@ -11,9 +13,9 @@ import img4 from '../assets/sitting1.jpg'
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { image: img1, alt: 'Lodge View 1', caption: 'Breathtaking Mountain Views' },
-    { image: img2, alt: 'Lodge View 2', caption: 'Cozy Fireplace in the Lobby' },
-    { image: img3, alt: 'Lodge View 3', caption: 'Relaxing Outdoor Patio' },
+    { image: img1, alt: 'Lodge View 1', caption: '' },
+    { image: img2, alt: 'Lodge View 2', caption: ' ' },
+    { image: img3, alt: 'Lodge View 3', caption: '' },
   ];
 
 
@@ -72,7 +74,7 @@ const Home = () => {
                         <p>Unwind and rejuvenate in our tranquil setting. Enjoy a soothing massage, relax by the fireplace, or simply soak in the peaceful atmosphere.</p>
                       </div>
                       <div className="experience">
-                        <img src={img4} alt="Dining" />
+                        <img src={img5} alt="Dining" />
                         <h3>Fine Dining</h3>
                         <p>Savor delectable cuisine prepared with fresh, local ingredients in our on-site restaurant. Our menu features a variety of dishes to satisfy every palate.</p>
                       </div>
