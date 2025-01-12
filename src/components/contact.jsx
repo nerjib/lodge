@@ -1,5 +1,6 @@
 // Contact.js
 import React from 'react';
+import Feedback from './feedback';
 
 function Contact() {
   return (
@@ -10,18 +11,19 @@ function Contact() {
           <h3 className="text-xl font-semibold mb-4">Tranquility Lodge</h3>
           <p className="mb-2">No 6, Apo Road</p>
           <p className="mb-2">New Millenium City, Kaduna</p>
-          <p className="mb-2">Phone: (234) 123-4567</p>
-          <p className="mb-2">Email: info@tranquilitylodge.com.ng</p>
+          <p className="mb-2">Phone: (234) 810-1032-153</p>
+          <p className="mb-2">Email: info@tranquilitylodgekd.com</p>
           <div className='mt-4'>
             <a href="mailto:info@tranquilitylodge.com.ng" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">
               Send Email
             </a>
-            <a href="tel:123-4567" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            <a href="tel:+2348101032153" className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
               Call Us
             </a>
           </div>
         </div>
       </div>
+      <Feedback />
     </div>
   );
 }

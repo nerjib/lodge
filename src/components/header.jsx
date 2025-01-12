@@ -24,7 +24,7 @@ const Header = () => {
     <header className="bg-black py-4 shadow-md sticky top-0 z-50">
     <div className="container mx-auto px-6 lg:px-8 flex justify-between items-center">
         <Link to="/" className="flex items-center">
-            <img src={logo} alt="Logo" className="h-10 mr-3" />
+            <img src={logo} alt="Logo" className="h-20 mr-3" />
             <span className="text-xl font-bold text-gray-100 text-gray-100">Tranquility Lodge</span>
         </Link>
 

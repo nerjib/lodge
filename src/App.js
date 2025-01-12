@@ -36,7 +36,7 @@ const App = () => {
           <Route exact path="/admin/home" element={<HomeContentManager />} />
           <Route exact path="/admin/bookings" element={<BookingManager />} />
           <Route exact path="/admin/hero" element={<HeroManager />} />
-          <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="/payment/:id" element={<Payment />} />
           <Route exact path="/booking-confirmation" element={<BookingConfirmation />} />          
 
         </Routes>

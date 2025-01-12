@@ -148,7 +148,7 @@ const Rooms = () => {
                     <label htmlFor="checkout">Check Out</label>
                     <input type="date" name='checkout' id='checkout' value={checkOutDate} onChange={e => setCheckOutDate(e.target.value)} min={checkInDate || new Date().toISOString().split('T')[0]} disabled={!checkInDate}/>
                 </div>
-                <div className="room-grid">
+                <div className="room-grid content-section">
                   {roomsData?.map((room) => (
                     <div className="room" key={room.name}>
                       <RoomCarousel images={room.images?.filter(e=> e!==null)} roomName={room.name}/>
@@ -183,9 +183,9 @@ const RoomCarousel = ({ images, roomName }) => {
   if (!images || images.length === 0) return null
 
   return (
-      <div className='room-carousel'>
+      <div className='room-carousel content-section'>
           <button onClick={prevImage} disabled={images.length <= 1}>{'<'}</button>
-          <img src={images[currentImageIndex]} alt={`${roomName} image ${currentImageIndex + 1}`} width={200}/>
+          <img src={images[currentImageIndex]} alt={`${roomName} image ${currentImageIndex + 1}`} width={400}/>
           <button onClick={nextImage} disabled={images.length <= 1}>{'>'}</button>
       </div>
   )

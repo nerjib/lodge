@@ -27,7 +27,10 @@ const [loading, setLoading] = useState(true); // Add loading state
 const [error, setError] = useState(null); // Add error state
 
 const handleAvailabilityCheck = async(roomType) => {
-  if (!formData.checkIn || !formData.checkOut) return Swal.fire('Checkin and Checkout dates must be selected!')
+  if (!formData.checkIn || !formData.checkOut) {
+    Swal.fire('Checkin and Checkout dates must be selected!')
+    return false;
+  }
     // Swal.fire('Checking room availalability')
   const res = await httpGet(`/api/v1/lodge/rooms/availability/${roomType}/${formData.checkIn}/${formData.checkOut}`)
   let avail = false;
@@ -41,7 +44,8 @@ const handleChange = async (e) => {
   const { name, value, type, checked } = e.target;
   if (name === 'checkIn') {
     if ( new Date(value)>= new Date(formData?.checkOut)){
-      return Swal.fire('Check out date must be after check in date')
+      setFormData({...formData, checkOut: ''});
+      // return Swal.fire('Check out date must be after check in date')
   }
   }
   if (name === 'checkOut') {
@@ -51,7 +55,9 @@ const handleChange = async (e) => {
   }
   if (name === 'roomTypes') {
     const avail = await handleAvailabilityCheck(value);
-    if (!avail) return Swal.fire(`${value} is not available for the dates selected!` );
+    if (!avail) {
+      return Swal.fire(`${value} is not available for the dates selected!` );
+    }
   }
   setFormData(prevFormData => ({
       ...prevFormData,
@@ -79,7 +85,7 @@ const handleSubmit = async (e) => {
     const totalAmount = roomsData.filter(room => formData.roomTypes.includes(room.name)).reduce((acc, room) => acc + room.price, 0);
     if (res?.status && res?.data[0]?.booking_id) {
       // Swal.fire('Successful', 'Invoice and payment link has been sent to your email', 'Done')
-      navigate('/payment', { state: { bookingData: {...formData, booking_id: res?.data?.booking_id} , totalAmount: totalAmount } });
+      navigate(`/payment/${res?.data[0]?.booking_id}`, { state: { bookingData: {...formData, booking_id: res?.data[0]?.booking_id} , totalAmount: totalAmount } });
     }
   } catch (error) {
       console.error('Booking error:', error);
