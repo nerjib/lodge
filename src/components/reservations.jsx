@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { baseUrl } from './services/config';
 import { httpGet, httpPost } from './services/http';
 import Swal from 'sweetalert2';
+import { currencyFormatter } from '../utils/helpers';
 
 const ReservationPage = () => {
   const navigate = useNavigate();
@@ -122,7 +123,7 @@ useEffect(() => {
     <div className="reservation-page">
       <h2>Make a Reservation</h2>
       {roomName && <h3>You are booking: {roomName}</h3>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='text-xl'>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
@@ -169,14 +170,18 @@ useEffect(() => {
           <label>Room Types:</label>
           <div>
           {roomsData.map((room) => (
-            <label>
+            <div key={room.name} className='flex row'>
+              <div className='mx-1 my-1'>
             <input type="checkbox" name="roomTypes" value={room?.name}
               checked={formData.roomTypes.includes(room?.name)}
               onChange={handleChange}
               // disabled={roomName !== null && roomName !== room?.name}
             />
-              {room?.name}
-            </label>
+            </div>
+            <div className='mx-1 my-1'>
+              {room?.name} - {currencyFormatter(room?.price)}
+              </div>
+            </div>
             ))}
               {/* <label>
                   <input type="checkbox" name="roomTypes" value="Standard Room" checked={formData.roomTypes.includes('Standard Room')} onChange={handleChange} disabled={roomName !== null && roomName !== 'Standard Room'}/>

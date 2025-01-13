@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css'; 
 import { useNavigate } from 'react-router-dom';
 import { baseUrl } from './services/config';
+import { currencyFormatter } from '../utils/helpers';
 
 
 
@@ -157,7 +158,7 @@ const Rooms = () => {
                       {/* <p className={`availability-message ${room.available ? 'available' : 'unavailable'}`}>
                         {room.available ? 'Available' : 'Not Available'}
                       </p> */}
-                      <p className="room-price">N{room.price}/night</p>
+                      <p className="room-price">{currencyFormatter(room.price)}</p>
                       <button className="book-button" onClick={() => handleBooking(room.name)}>
                         Book Now
                       </button>

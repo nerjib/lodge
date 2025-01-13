@@ -21,17 +21,17 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-black py-4 shadow-md sticky top-0 z-50">
+    <header className="bg-white py-4 shadow-md sticky top-0 z-50">
     <div className="container mx-auto px-6 lg:px-8 flex justify-between items-center">
         <Link to="/" className="flex items-center">
             <img src={logo} alt="Logo" className="h-20 mr-3" />
-            <span className="text-xl font-bold text-gray-100 text-gray-100">Tranquility Lodge</span>
+            <span className="text-xl font-bold text-black">Tranquility Lodge</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 text-gray-600">
             {navItems.map(item => (
-            <Link ey={item.id} to={item.to} className="hover:text-gray-900 transition duration-300">{item.text}</Link>
+            <Link ey={item.id} to={item.to} className="hover:text-gray-900 text-xl text-[#A86A00] transition duration-300">{item.text}</Link>
 
             ))}
             {/* <Link to="/" className="hover:text-gray-900 transition duration-300">Home</Link>
@@ -56,7 +56,7 @@ const Header = () => {
         <div className="md:hidden bg-gray-50 py-2 px-6">
             <nav className="flex flex-col space-y-3 text-gray-600">
             {navItems.map(item => (
-            <Link ey={item.id} to={item.to} className="hover:text-gray-900 hover:bg-gray-300 transition duration-300">{item.text}</Link>
+            <Link ey={item.id} to={item.to} className="hover:text-gray-900 text-[#A86A00] hover:bg-gray-300 transition duration-300">{item.text}</Link>
 
             ))}
                 {/* <Link to="/" className="block py-2 hover:bg-gray-100 rounded transition duration-300" onClick={toggleMobileMenu}>Home</Link>

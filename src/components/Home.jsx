@@ -90,9 +90,9 @@ useEffect(() => {
                     {heroContent.map((item, index) => (
                         <div className="carousel-item relative h-full w-full flex-shrink-0" key={index}>
                             <img src={item.image} alt={item.title} className="object-cover w-full h-full" />
-                            <div className="carousel-caption absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white p-8 bg-black/50 rounded-lg">
+                            <div className="carousel-caption absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-white p-8 bg-black/100 rounded-lg">
                                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">{item.title}</h1>
-                                <p className="text-lg md:text-xl">{item.description}</p>
+                                <p className="text-5xl md:text-4xl">{item.description}</p>
                             </div>
                         </div>
                     ))}
@@ -115,30 +115,30 @@ useEffect(() => {
                     <p>Whether you're seeking adventure on the trails, a peaceful retreat by the fire, or simply a breathtaking view from your window, you'll find it all here. Our dedicated staff is committed to providing exceptional service and creating a memorable experience for each of our guests.</p>
                   </section> */}
                   <section className='welcome-section'>
-                    <h2>{welcome?.title}</h2>
+                    <h2 className='text-3xl'>{welcome?.title}</h2>
                     {/* {homeContent?.welcome[0]?.content.map((p, index) => <p key={index}>{p}</p>)} */}
-                    <p>{welcome?.paragraph} </p>
+                    <p className='text-2xl'>{welcome?.paragraph} </p>
                   </section>
 
                   <section className="featured-experiences">
-                    <h2>Featured Experiences</h2>
+                    <h2 className='text-3xl'>Featured Experiences</h2>
                     <div className='experience-grid'>
                         {homeContent?.experience?.map(exp => (
                             <div className='experience' key={exp.title}>
                                 <img src={exp.image} alt={exp.title} />
-                                <h3>{exp.title}</h3>
-                                <p>{exp.paragraph}</p>
+                                <h3 className='text-3xl'>{exp.title}</h3>
+                                <p className="text-2xl">{exp.paragraph}</p>
                             </div>
                         ))}
                     </div>
                   </section>
 
                   <section className="testimonials">
-                    <h2>What Our Guests Say</h2>
+                    <h2 className='text-3xl'>What Our Guests Say</h2>
                     <div className='testimonial-grid'>
                         {homeContent?.testimonials?.map(test => (
                             <div className='testimonial' key={test.author}>
-                                <p>{test.description} - {test.author}</p>
+                                <p className='text-2xl'>{test.description} - {test.author}</p>
                             </div>
                         ))}
                     </div>

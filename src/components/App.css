@@ -294,27 +294,31 @@ footer {
   transform: translate(-50%, -50%); /* Center the caption */
   text-align: center;
   color: white; /* Or any color you prefer */
-  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
   padding: 20px;
   border-radius: 10px;
 }
 
-.carousel-caption h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-  /*color: rgb(12, 12, 11); /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
-  font-family: 'Pacifico', cursive;
-}
-
 .carousel-caption p {
-  font-size: 1.5em;
-  /*color: rgb(101, 98, 89); /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
+  /* font-size: 1.5em; */
+  margin-bottom: 10px;
+  color: #FFffff; /* Or any golden color you prefer, e.g., #FFD700, #DAA520*/
+  font-family: 'Pacifico', cursive;
+  /* color: #A86A00; */
+}
+.carousel-caption h1 {
+  /* font-size: 2em; */
+  margin-bottom: 10px;
+  
+  /*color: rgb(12, 12, 11); /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
   /* font-family: 'Pacifico', cursive; */
 }
 
+
 h2, h3 {
-  color: rgb(105, 78, 3); /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
+  color: #A86A00; /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
   font-family: 'Pacifico', cursive;
+  font-size: 1.5em;
 }
 
 h1 {

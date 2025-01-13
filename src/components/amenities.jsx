@@ -9,8 +9,8 @@ const Amenities = () => {
     <div className="app-container">
       <main>
           <section className="content-section">
-            <h2>Our Amenities</h2>
-            <ul>
+            <h2 className='text-3xl'>Our Amenities</h2>
+            <ul className='text-xl'>
               <li>Free Wi-Fi</li>
               <li>24/7 Electricity (Inverter & Generator)</li>
               <li>Complimentary Breakfast</li>
