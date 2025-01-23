@@ -5,6 +5,8 @@ import { baseUrl } from './services/config';
 import { httpGet, httpPost } from './services/http';
 import Swal from 'sweetalert2';
 import { currencyFormatter } from '../utils/helpers';
+import { DatePicker } from 'antd';
+import moment from 'moment/moment';
 
 const ReservationPage = () => {
   const navigate = useNavigate();
@@ -138,7 +140,7 @@ useEffect(() => {
         </div>
         <div className="form-group">
                     <label htmlFor="checkIn">Check-in Date:</label>
-                    <input
+                    {/* <input
                         type="date"
                         id="checkIn"
                         name="checkIn"
@@ -147,6 +149,20 @@ useEffect(() => {
                         required
                         min={new Date().toISOString().split('T')[0]} // Disable past dates
                         // disabled
+                    /> */}
+                    <DatePicker
+                      className="w-full border-1 "
+                      name="checkIn"
+                      id="checkIn"
+                      min={new Date()} // Disable past dates
+                      // showTimeSelect
+                      selected={formData.checkIn}
+                      onChange={(date) => {
+                        // console.log({ hhh: date?.})
+                        const value = moment(new Date(date)).format("YYYY-MM-DD");
+                        setFormData({...formData, checkIn: value});
+                      }}
+                      dateFormat="yyyy/MM/dd"
                     />
                 </div>
                 <div className="form-group">
@@ -161,6 +177,20 @@ useEffect(() => {
                         min={formData.checkIn || new Date().toISOString().split('T')[0]}
                         // disabled
                     />
+                    {/* <DatePicker
+                      className="w-full border-1 "
+                      name="checkOut"
+                      id="checkOut"
+                      min={formData.checkIn || new Date().toISOString().split('T')[0]} // Disable past dates
+                      // showTimeSelect
+                      selected={formData.checkOut}
+                      onChange={(date) => {
+                        // console.log({ hhh: date?.})
+                        const value = moment(new Date(date)).format("YYYY-MM-DD");
+                        setFormData({...formData, checkOut: value});
+                      }}
+                      dateFormat="yyyy/MM/dd"
+                    /> */}
                 </div>
         <div className="form-group">
           <label htmlFor="guests">Number of Guests:</label>
