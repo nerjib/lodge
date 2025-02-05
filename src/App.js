@@ -15,6 +15,9 @@ import HeroManager from './components/HeroManager';
 import Navbar from './components/navbar';
 import Payment from './components/payments';
 import BookingConfirmation from './components/bookingConfirmation';
+import LandingPage from './components/landing';
+import GalleryPage from './components/galleryPage';
+import AboutUsPage from './components/aboutPage';
 
 
 
@@ -26,18 +29,21 @@ const App = () => {
         <Header />
         {/* <Navbar /> */}
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/" element={<LandingPage />} />
           {/* <Route path="/rooms" element={<Rooms />} /> */}
           <Route exact path="/reservation" element={<ReservationPage />} />
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/rooms" element={<Rooms />} />
+          <Route exact path="/gallery" element={<GalleryPage />} />
           <Route exact path="/amenities" element={<Amenities />} />
           <Route exact path="/admin" element={<RoomManager />} />
           <Route exact path="/admin/home" element={<HomeContentManager />} />
           <Route exact path="/admin/bookings" element={<BookingManager />} />
           <Route exact path="/admin/hero" element={<HeroManager />} />
           <Route exact path="/payment/:id" element={<Payment />} />
-          <Route exact path="/booking-confirmation" element={<BookingConfirmation />} />          
+          <Route exact path="/booking-confirmation" element={<BookingConfirmation />} />
+          <Route exact path="/about" element={<AboutUsPage />} />          
+          
 
         </Routes>
         <Footer />

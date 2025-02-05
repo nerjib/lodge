@@ -3,7 +3,11 @@ import './App.css';
 import { useNavigate } from 'react-router-dom';
 import { baseUrl } from './services/config';
 import { currencyFormatter } from '../utils/helpers';
-
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 
 
@@ -143,16 +147,35 @@ const Rooms = () => {
       <main>
         <section className="content-section">
         <h2>Our Rooms & Suites</h2>
-        <div className='date-pickers'>
+        {/* <div className='date-pickers'>
                     <label htmlFor="checkin">Check In</label>
                     <input type="date" name='checkin' id='checkin' value={checkInDate} onChange={e => setCheckInDate(e.target.value)} min={new Date().toISOString().split('T')[0]}/>
                     <label htmlFor="checkout">Check Out</label>
                     <input type="date" name='checkout' id='checkout' value={checkOutDate} onChange={e => setCheckOutDate(e.target.value)} min={checkInDate || new Date().toISOString().split('T')[0]} disabled={!checkInDate}/>
-                </div>
+                </div> */}
                 <div className="room-grid content-section">
                   {roomsData?.map((room) => (
                     <div className="room" key={room.name}>
-                      <RoomCarousel images={room.images?.filter(e=> e!==null)} roomName={room.name}/>
+                      {/* <RoomCarousel images={room.images?.filter(e=> e!==null)} roomName={room.name}/> */}
+                      <Swiper
+                          modules={[Autoplay, Pagination, Navigation]}
+                          spaceBetween={0}
+                          slidesPerView={1}
+                          autoplay={{ delay: 5000, disableOnInteraction: false }}
+                          pagination={{ clickable: true }}
+                          navigation
+                          loop
+                          className="w-full h-96 text-gray-800"
+                        >
+                          {room.images?.filter(e=> e!==null).map((image, index) => (
+                            <SwiperSlide key={index}>
+                              <div
+                                className="w-full h-full bg-cover bg-center"
+                                style={{ backgroundImage: `url(${image})` }}
+                              />
+                            </SwiperSlide>
+                          ))}
+                        </Swiper>
                       <h3>{room.name}</h3>
                       <p>{room.description}</p>
                       {/* <p className={`availability-message ${room.available ? 'available' : 'unavailable'}`}>
@@ -166,6 +189,44 @@ const Rooms = () => {
                   ))}
                 </div>
         </section>
+        <div className="space-y-8" hidden>
+          {roomsData?.map((room) => (
+            <div key={room.id} className="bg-white rounded-lg shadow-md overflow-hidden">
+              {/* Room Carousel */}
+              <Swiper
+                modules={[Autoplay, Pagination, Navigation]}
+                spaceBetween={0}
+                slidesPerView={1}
+                autoplay={{ delay: 5000, disableOnInteraction: false }}
+                pagination={{ clickable: true }}
+                navigation
+                loop
+                className="w-full h-96"
+              >
+                {room.images?.filter(e=> e!==null).map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <div
+                      className="w-full h-full bg-cover bg-center"
+                      style={{ backgroundImage: `url(${image})` }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Room Details */}
+              <div className="p-6">
+                <h3 className="text-2xl font-bold mb-2">{room.name}</h3>
+                <p className="text-gray-600 mb-4">{room.description}</p>
+                <div className="flex justify-between items-center">
+                  <p className="text-lg font-semibold text-gray-800">{currencyFormatter(room.price)} / night</p>
+                  <button className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+                    Book Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </main>
     </div>
   );

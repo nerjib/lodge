@@ -18,6 +18,7 @@ const Navbar = () => {
     { id: 2, text: 'Rooms' , to: '/rooms'},
     { id: 3, text: 'Services', to: '/amenities'},
     { id: 4, text: 'Reservations', to: '/reservation' },
+    { id: 4, text: 'Gallery', to: '/gallery' },
     { id: 5, text: 'About Us', to: '/about' },
     { id: 6, text: 'Contact Us', to: '/contact' },
   ];

@@ -5,8 +5,10 @@ import { baseUrl } from './services/config';
 import { httpGet, httpPost } from './services/http';
 import Swal from 'sweetalert2';
 import { currencyFormatter } from '../utils/helpers';
-import { DatePicker } from 'antd';
+// import { DatePicker } from 'antd';
 import moment from 'moment/moment';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const ReservationPage = () => {
   const navigate = useNavigate();
@@ -123,8 +125,8 @@ useEffect(() => {
   // }, [roomName]);
   return (
     <div className="reservation-page">
-      <h2>Make a Reservation</h2>
-      {roomName && <h3>You are booking: {roomName}</h3>}
+      <h2 >Make a Reservation</h2>
+      {/* {roomName && <h3 className='text-gray-800'>You are booking: {roomName}</h3>} */}
       <form onSubmit={handleSubmit} className='text-xl'>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -150,7 +152,7 @@ useEffect(() => {
                         min={new Date().toISOString().split('T')[0]} // Disable past dates
                         // disabled
                     /> */}
-                    <DatePicker
+                    {/* <DatePicker
                       className="w-full border-1 "
                       name="checkIn"
                       id="checkIn"
@@ -163,11 +165,21 @@ useEffect(() => {
                         setFormData({...formData, checkIn: value});
                       }}
                       dateFormat="yyyy/MM/dd"
+                    /> */}
+                    <DatePicker
+                      selected={formData.checkIn}
+                      onChange={(date) => {
+                        const value = moment(new Date(date)).format("YYYY-MM-DD");
+                        setFormData({...formData, checkIn: value, checkOut: ''});
+                      }}
+                      minDate={new Date()}
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholderText="Select check-in date"
                     />
                 </div>
                 <div className="form-group">
                     <label htmlFor="checkOut">Check-out Date:</label>
-                    <input
+                    {/* <input
                         type="date"
                         id="checkOut"
                         name="checkOut"
@@ -176,6 +188,18 @@ useEffect(() => {
                         required
                         min={formData.checkIn || new Date().toISOString().split('T')[0]}
                         // disabled
+                    /> */}
+                    <DatePicker
+                      disabled={!formData.checkIn}
+                      selected={formData.checkOut}
+                      onChange={(date) => {
+                        const value = moment(new Date(date)).format("YYYY-MM-DD");
+                        setFormData({...formData, checkOut: value});
+                        // setCheckOutDate(date)
+                      }}
+                      minDate={formData.checkIn || new Date()}
+                      className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholderText="Select check-out date"
                     />
                     {/* <DatePicker
                       className="w-full border-1 "
