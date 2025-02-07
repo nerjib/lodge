@@ -17,7 +17,7 @@ const Header = () => {
     { id: 3, text: 'Services', to: '/amenities'},
     { id: 4, text: 'Reservations', to: '/reservation' },
     { id: 7, text: 'Gallery', to: '/gallery' },
-    { id: 5, text: 'About Us', to: '/about' },
+    { id: 5, text: 'About Us', to: '/#about' },
     { id: 6, text: 'Contact Us', to: '/contact' },
   ];
 
@@ -32,7 +32,7 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 text-gray-600">
             {navItems.map(item => (
-            <Link ey={item.id} to={item.to} className="hover:text-gray-900 text-xl text-[#A86A00] transition duration-300">{item.text}</Link>
+            <Link ey={item.id} to={item.to} className="text-[#A86A00] transition duration-300 header2">{item.text}</Link>
 
             ))}
             {/* <Link to="/" className="hover:text-gray-900 transition duration-300">Home</Link>
@@ -57,7 +57,7 @@ const Header = () => {
         <div className="md:hidden bg-gray-50 py-2 px-6">
             <nav className="flex flex-col space-y-3 text-gray-600">
             {navItems.map(item => (
-            <Link ey={item.id} to={item.to} className="hover:text-gray-900 text-[#A86A00] hover:bg-gray-300 transition duration-300">{item.text}</Link>
+            <Link ey={item.id} to={item.to} className="text-[#A86A00] hover:bg-gray-300 transition duration-300 header2">{item.text}</Link>
 
             ))}
                 {/* <Link to="/" className="block py-2 hover:bg-gray-100 rounded transition duration-300" onClick={toggleMobileMenu}>Home</Link>

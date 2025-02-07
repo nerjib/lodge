@@ -41,8 +41,8 @@ const Feedback = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h2 className="text-2xl text-black font-bold mb-4">Leave us a feedback</h2>
-            <p className="text-xl mb-4">
+            <h2 className=" text-black font-bold mb-4 header3">Leave us a feedback</h2>
+            <p className="text-sm mb-4">
             We value your feedback and are here to assist with any inquiries or requests. Whether you need information, have special requirements, or want to share your experience, our team is eager to hear from you and ensure your stay is exceptional. Contact us today!
             </p>
 

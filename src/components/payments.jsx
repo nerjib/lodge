@@ -136,10 +136,10 @@ const Payment = () => {
         const nights = Math.ceil((new Date(bookingData?.check_out) - new Date(bookingData?.check_in)) / (1000 * 60 * 60 * 24));
         const roomCost = totalAmount * nights;
         const cautionFee = bookingData?.room_types?.length * 20000;
-        let discount =0;
-        if(nights > 3 || bookingData?.room_types.length > 3){
-            discount = roomCost * 0.2;
-        }
+        let discount = bookingData?.discount ?? 0;
+        // if(nights > 3 || bookingData?.room_types.length > 3){
+        //     discount = roomCost * 0.2;
+        // }
         const total = roomCost + cautionFee - discount;
         setPaymentSummary({roomCost, cautionFee, discount, total});
       }, [bookingData]);
@@ -150,21 +150,21 @@ const Payment = () => {
 
     return (
         <div className="container mx-auto p-4">
-            <h2 className="text-2xl font-bold mb-4">Payment</h2>
+            <h2 className="text-2xl font-bold mb-4 header2">Payment</h2>
              {paymentError && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
                 <strong className="font-bold">Error!</strong>
                 <span className="block sm:inline">{paymentError}</span>
             </div>}
             <div className="mb-4 bg-gray-100 p-4 rounded">
-                <h3 className="font-semibold mb-2">Your Booking</h3>
-                <p>Rooms: {bookingData?.room_types?.join(', ')}</p>
+                <h3 className="font-semibold mb-2 text-xl header3">Your Booking</h3>
+                <p>{`Room${bookingData?.room_types?.length > 1 ? 's':''}`}: {bookingData?.room_types?.join(', ')}</p>
                 <p>Check-in: {new Date(bookingData.check_in).toISOString().split('T')[0]}</p>
                 <p>Check-out: {new Date(bookingData.check_out).toISOString().split('T')[0]}</p>
                 <p>Number of Nights: {Math.ceil((new Date(bookingData.check_out) - new Date(bookingData.check_in)) / (1000 * 60 * 60 * 24))}</p>
             </div>
             <div className="mb-4 bg-gray-100 p-4 rounded">
-                <h3 className="font-semibold mb-2">Payment Summary</h3>
-                <p>Rooms Cost: {currencyFormatter(paymentSummary.roomCost)}</p>
+                <h3 className="font-semibold mb-2 text-xl header3">Payment Summary</h3>
+                <p>{`Room${bookingData?.room_types?.length > 1 ? 's':''}`} Cost: {currencyFormatter(paymentSummary.roomCost)}</p>
                 <p>Caution Fee: {currencyFormatter(paymentSummary.cautionFee)}</p>
                 <p>Discount: {currencyFormatter(paymentSummary.discount)}</p>
                 <p>Total Amount: {currencyFormatter(paymentSummary.total)}</p>

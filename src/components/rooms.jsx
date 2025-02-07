@@ -176,8 +176,8 @@ const Rooms = () => {
                             </SwiperSlide>
                           ))}
                         </Swiper>
-                      <h3>{room.name}</h3>
-                      <p>{room.description}</p>
+                      <h3 className='header3'>{room.name}</h3>
+                      <p className='text-sm'>{room.description}</p>
                       {/* <p className={`availability-message ${room.available ? 'available' : 'unavailable'}`}>
                         {room.available ? 'Available' : 'Not Available'}
                       </p> */}

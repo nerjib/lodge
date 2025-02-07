@@ -6,6 +6,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { hideLoader } from '../utils/loader';
 import { baseUrl } from './services/config';
+import gal2 from '../assets/gallery/gal2.jpg'
+import { Dining, SolarPower, Wifi } from '@mui/icons-material';
+
 
 const LandingPage = () => {
   const [data, setData] = useState(null);
@@ -106,12 +109,28 @@ const LandingPage = () => {
                 style={{ backgroundImage: `url(${data?.image})` }}
               >
                 <div className="container mx-auto px-6 py-20 text-center">
-                  <h1 className="text-4xl font-bold text-white mb-4">Welcome to {data?.title}</h1>
-                  <p className="text-xl text-white mb-8">{data?.description}</p>
-                  <a href="#rooms" className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200">
+                <p className="text-xl text-white mb-8"
+                    style={{
+                        display: 'block',
+                        letterSpacing: '3px',
+                        margin:'0 0 10px 0',
+                        color: '#A86A00',
+                        fontWeight: '600',
+                        fontSize: '.875em'
+                    }}
+                >{data?.description.toUpperCase()}</p>
+                  <h1 className="text-4xl font-bold text-white mb-4 my-4"
+                    style={{
+                        fontSize: '2.25rem',
+                        margin:'30px 0 30px 0',
+                        fontWeight: '600',
+                        
+                    }}
+                  ></h1>
+                  <a href="#rooms" className="bg-white text-gray-800 my-5 mx-2 px-6 py-3 rounded-full font-semibold hover:bg-gray-200">
                     Explore More
                   </a>
-                  <a href="#reservation" className="bg-white text-gray-800 px-6 py-3 rounded-full font-semibold hover:bg-gray-200">
+                  <a href="#reservation" className="bg-white text-gray-800 my-5 mx-2 px-6 py-3 rounded-full font-semibold hover:bg-gray-200">
                     Book Now
                   </a>
                 </div>
@@ -121,39 +140,67 @@ const LandingPage = () => {
         </Swiper>
       </section>
 
-      <section id="about" className="container mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Featured Experiences</h2>
+      {/* <section id="about" className="container mx-auto px-6 py-16">
+        <h2 className="header2">Featured Experiences</h2>
         <div className='experience-grid'>
             {homeContent?.experience?.map(exp => (
                 <div className='experience' key={exp.title}>
                     <img src={exp.image} alt={exp.title} />
-                    <h3 className='text-3xl'>{exp.title}</h3>
-                    <p className="text-2xl">{exp.paragraph}</p>
+                    <h3 className='text-2xl'>{exp.title}</h3>
+                    <p className="text-sm">{exp.paragraph}</p>
                 </div>
             ))}
         </div>
-      </section>
+      </section> */}
       {/* About Section */}
-      <section id="about" className="container mx-auto px-6 py-16" hidden>
-        <h2 className="text-3xl font-bold text-center mb-8">About Us</h2>
+      <section id="about" className="mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
           <div>
-            <img src={data?.aboutImage} alt="About Us" className="rounded-lg shadow-md" />
+            <img src={gal2} alt="About Us" className="rounded-lg shadow-md" />
           </div>
-          <div>
-            <p className="text-gray-600">{data?.aboutDescription}</p>
+          <div className='my-5'>
+          <h2 className="font-bold text-start mb-8 my-2"
+            style={{
+                display: 'block',
+                letterSpacing: '3px',
+                margin:'0 0 10px 0',
+                color: '#A86A00',
+                fontWeight: '600',
+                fontSize: '.875em'
+            }}
+          >ABOUT US</h2>
+            <h2 className="about-header my-2"
+            
+                style={{
+                    color: '#333',
+                    fontWeight: '700',
+                    letterSpacing: '-.03em',
+                    fontSize: '2.375rem',
+                    marginBottom: '15px',
+                }}
+            >
+                Welcome to Tranquility Lodge Kaduna
+            </h2>
+            <p className="text-sm">A home away from home</p>
+            <p className="text-sm">A seven bedroom apartment and a studio apartment that can be booked for short or longs stays, events and gatherings with fully equipped kitchen, laundry and fully furnished bedrooms and living rooms Nestled in the heart of Kaduna Millenium City, Tranquility lodge offers an unforgettable escape. Our cozy lodge provides the perfect blend of rustic charm and modern amenities, ensuring a relaxing and rejuvenating stay.
+            Whether you're seeking adventure or a getaway, staycation, intimate gathering, you'll find it all here. Our dedicated staff are committed to providing exceptional service and creating a memorable experience for each of our guests.</p>
+            <p className="text-gray-600"></p>
           </div>
         </div>
       </section>
-
       {/* Services Section */}
       <section id="services" className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-8">Our Services</h2>
+          <h2 className="header2">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {homeContent?.experience?.map((service, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">{service.title}</h3>
+                  {service?.title.includes('Wi-Fi') ? <Wifi />
+                  : service?.title.includes('breakfast') ? <Dining />
+                  :service?.title.includes('Electricity') ? <SolarPower />
+                : ''}
+                <h3 className="text-xl font-semibold text-gray-800 header3">{service.title}</h3>
                 <p className="text-gray-600">{service.paragraph}</p>
               </div>
             ))}
@@ -163,7 +210,7 @@ const LandingPage = () => {
 
       {/* Testimonials Section */}
       <section id="testimonials" className="container mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-center mb-8">What Our Guests Say</h2>
+        <h2 className="header2">What Our Guests Say</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {homeContent?.testimonials?.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-lg shadow-md p-6">
@@ -177,7 +224,7 @@ const LandingPage = () => {
       {/* Contact Section */}
       <section id="contact" className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
-          <h2 className="text-3xl font-bold text-center mb-8">Contact Us</h2>
+          <h2 className="header2">Contact Us</h2>
           <form className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
             <div className="mb-4">
               <label className="block text-gray-800 mb-2">Name</label>

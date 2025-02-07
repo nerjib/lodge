@@ -320,13 +320,85 @@ footer {
 }
 
 
-h2, h3 {
+h3 {
   color: #A86A00; /* Or any golden color you prefer, e.g., #FFD700, #DAA520 */
   /* font-family: 'Pacifico', cursive; */
   font-size: 1.5em;
-  font-family: "Playfair Display", serif;
+  font-family: "Montserrat", Helvetica, sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
+  font-style: normal;
+}
+h2 {
+  text-transform: uppercase;
+  color: #A86A00;
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+
+.about {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  font-family: "Montserrat", Helvetica, sans-serif;
+  color: #333;
+}
+
+.header2 {
+  text-transform: uppercase;
+  color: #A86A00;
+  letter-spacing: 3px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+.contact-label {
+  text-transform: uppercase;
+  color: #A86A00;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-size: 0.75rem;
+}
+.about-header {
+  display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    font-weight: 700;
+    font-size: 2.375rem;
+    margin-bottom: 15px;  
+    font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+.header3 {
+  display: block;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+    color: "#333";
+    font-weight: 700;
+    font-size: 1.375rem;
+    margin-bottom: 15px;  
+    font-family: "Montserrat", serif;
+  font-optical-sizing: auto;
   font-style: normal;
 }
 
