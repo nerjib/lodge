@@ -161,15 +161,29 @@ const Payment = () => {
                 <p>Check-in: {new Date(bookingData.check_in).toISOString().split('T')[0]}</p>
                 <p>Check-out: {new Date(bookingData.check_out).toISOString().split('T')[0]}</p>
                 <p>Number of Nights: {Math.ceil((new Date(bookingData.check_out) - new Date(bookingData.check_in)) / (1000 * 60 * 60 * 24))}</p>
+                <p>Booking Status: {bookingData?.status}</p>
+                {/* {bookingData?.is_paid ? '':<p>Reservation time before booking is cancelled: { }</p>} */}
+
             </div>
             <div className="mb-4 bg-gray-100 p-4 rounded">
                 <h3 className="font-semibold mb-2 text-xl header3">Payment Summary</h3>
                 <p>{`Room${bookingData?.room_types?.length > 1 ? 's':''}`} Cost: {currencyFormatter(paymentSummary.roomCost)}</p>
-                <p>Caution Fee: {currencyFormatter(paymentSummary.cautionFee)}</p>
+                <p>Refundable Caution Fee: {currencyFormatter(paymentSummary.cautionFee)}</p>
                 <p>Discount: {currencyFormatter(paymentSummary.discount)}</p>
                 <p>Total Amount: {currencyFormatter(paymentSummary.total)}</p>
+                <p>Payment Status: {bookingData?.is_paid ? 'PAID' : 'PENDING'}</p>
             </div>
-            {bookingData?.is_paid ? '' : <button onClick={handlePayment} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">Pay with Paystack</button>}
+            
+            {bookingData?.is_paid ? '' : <button
+                disabled={bookingData.status !== 'pending'}
+                onClick={handlePayment}
+                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+            >
+              Pay with Paystack
+            </button>}
+            <div className='mt-3'>
+                All reservations will be cancelled one hour after, if payment is not done.
+            </div>
         </div>
     );
 };
