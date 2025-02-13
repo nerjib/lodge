@@ -154,7 +154,7 @@ footer {
 }
 
 .book-button {
-  background-color: #007bff; /* Example button color */
+  background-color: #A86A00; /* Example button color */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -163,7 +163,7 @@ footer {
 }
 
 .book-button:hover {
-  background-color: #0056b3;
+  background-color: #Af9d00;
 }
 @media (max-width: 768px) { /* Adjust breakpoint as needed */
   .main-nav {

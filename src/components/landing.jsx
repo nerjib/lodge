@@ -8,6 +8,8 @@ import { hideLoader } from '../utils/loader';
 import { baseUrl } from './services/config';
 import gal2 from '../assets/gallery/gal2.jpg'
 import { Dining, SolarPower, Wifi } from '@mui/icons-material';
+import { message } from 'antd';
+import Swal from 'sweetalert2';
 
 
 const LandingPage = () => {
@@ -20,6 +22,7 @@ const LandingPage = () => {
     const [experience, setExperience] = useState([]);
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const [postData, setPostData] = useState({});
   
   
   useEffect(() => {
@@ -69,6 +72,31 @@ const LandingPage = () => {
   
       fetchHomeContent()
   }, [])
+
+  const handleSubmitFeedBack = async (e) =>{
+ e.preventDefault();
+        // setSubmissionStatus('pending'); // Set status to pending during submission
+
+        try {
+            const response = await fetch(`${baseUrl}/api/v1/lodge/feedback`, { // Your backend API endpoint
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(postData),
+            });
+
+            if (response.ok) {
+                setPostData({ name: '', email: '', message: '' }); // Clear the form
+                Swal.fire('Done', 'Message submitted', 'success')
+            } else {
+                const errorData = await response.json()
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+        }
+  }
 
   if (loading) {
     return <div className="text-center mt-10">Loading...</div>;
@@ -192,16 +220,16 @@ const LandingPage = () => {
       {/* Services Section */}
       <section id="services" className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
-          <h2 className="header2">Our Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="header2 my-3 mb-5">Our Services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-3">
             {homeContent?.experience?.map((service, index) => (
               <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center">
-                  {service?.title.includes('Wi-Fi') ? <Wifi />
-                  : service?.title.includes('breakfast') ? <Dining />
-                  :service?.title.includes('Electricity') ? <SolarPower />
+                  {service?.title.includes('Wi-Fi') ? <Wifi style={{ color: '#A86A00', height: '50px', width: '50px'}} />
+                  : service?.title.includes('breakfast') ? <Dining style={{ color: '#A86A00', height: '50px', width: '50px'}} />
+                  :service?.title.includes('Electricity') ? <SolarPower style={{ color: '#A86A00', height: '50px', width: '50px'}} />
                 : ''}
                 <h3 className="text-xl font-semibold text-gray-800 header3">{service.title}</h3>
-                <p className="text-gray-600">{service.paragraph}</p>
+                <p className="text-sm">{service.paragraph}</p>
               </div>
             ))}
           </div>
@@ -211,11 +239,11 @@ const LandingPage = () => {
       {/* Testimonials Section */}
       <section id="testimonials" className="container mx-auto px-6 py-16">
         <h2 className="header2">What Our Guests Say</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-3">
           {homeContent?.testimonials?.map((testimonial, index) => (
             <div key={index} className="bg-white rounded-lg shadow-md p-6">
-              <p className="text-gray-600 mb-4">"{testimonial.description}"</p>
-              <p className="text-gray-800 font-semibold">- {testimonial.author}</p>
+              <p className="text-sm mb-4">"{testimonial.description}"</p>
+              <p className="text-sm font-semibold">- {testimonial.author}</p>
             </div>
           ))}
         </div>
@@ -225,18 +253,18 @@ const LandingPage = () => {
       <section id="contact" className="bg-gray-50 py-16">
         <div className="container mx-auto px-6">
           <h2 className="header2">Contact Us</h2>
-          <form className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+          <form className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md" onSubmit={handleSubmitFeedBack}>
             <div className="mb-4">
               <label className="block text-gray-800 mb-2">Name</label>
-              <input type="text" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input value={postData.name} onChange={(e)=>setPostData({ ...postData, name: e.target.value})} type="text" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <div className="mb-4">
               <label className="block text-gray-800 mb-2">Email</label>
-              <input type="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <input value={postData.email} onChange={(e)=>setPostData({ ...postData, email: e.target.value})} type="email" className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
             <div className="mb-4">
               <label className="block text-gray-800 mb-2">Message</label>
-              <textarea className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
+              <textarea value={postData.message} onChange={(e)=>setPostData({ ...postData, message: e.target.value})} className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4"></textarea>
             </div>
             <button type="submit" className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">Send Message</button>
           </form>

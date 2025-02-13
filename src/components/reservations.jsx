@@ -125,9 +125,10 @@ useEffect(() => {
   // }, [roomName]);
   return (
     <div className="reservation-page">
-      <h2 >Make a Reservation</h2>
+      <h2 className="text-xl font-bold text-center mb-8">Make a Reservation</h2>
+
       {/* {roomName && <h3 className='text-gray-800'>You are booking: {roomName}</h3>} */}
-      <form onSubmit={handleSubmit} className='text-xl'>
+      <form onSubmit={handleSubmit} className='text-sm'>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
@@ -223,7 +224,8 @@ useEffect(() => {
         <div className="form-group">
           <label>Room Types:</label>
           <div>
-          {roomsData.map((room) => (
+          <label className='mt-3 header3' style={{ fontWeight: 'bold', fontSize: '14px'}}>Studio Apartment</label>
+          {roomsData.filter(e=> e?.floor === 3).map((room) => (
             <div key={room.name} className='flex row'>
               <div className='mx-1 my-1'>
             <input type="checkbox" name="roomTypes" value={room?.name}
@@ -237,6 +239,40 @@ useEffect(() => {
               </div>
             </div>
             ))}
+            <div>
+              <label className='mt-3 header3' style={{ fontWeight: 'bold', fontSize: '14px'}}>Downstairs</label>
+                {roomsData.filter(e=> e?.floor === 0).map((room) => (
+              <div key={room.name} className='flex row'>
+                <div className='mx-1 my-1'>
+              <input type="checkbox" name="roomTypes" value={room?.name}
+                checked={formData.roomTypes.includes(room?.name)}
+                onChange={handleChange}
+                // disabled={roomName !== null && roomName !== room?.name}
+              />
+              </div>
+              <div className='mx-1 my-1'>
+                {room?.name} - {currencyFormatter(room?.price)}
+                </div>
+              </div>
+              ))}
+            </div>
+            <div>
+              <label className='header3 mt-3' style={{ fontWeight: 'bold', fontSize: '14px'}}>Upstairs</label>
+                {roomsData.filter(e=> e?.floor === 1).map((room) => (
+              <div key={room.name} className='flex row'>
+                <div className='mx-1 my-1'>
+              <input type="checkbox" name="roomTypes" value={room?.name}
+                checked={formData.roomTypes.includes(room?.name)}
+                onChange={handleChange}
+                // disabled={roomName !== null && roomName !== room?.name}
+              />
+              </div>
+              <div className='mx-1 my-1'>
+                {room?.name} - {currencyFormatter(room?.price)}
+                </div>
+              </div>
+              ))}
+            </div>
               {/* <label>
                   <input type="checkbox" name="roomTypes" value="Standard Room" checked={formData.roomTypes.includes('Standard Room')} onChange={handleChange} disabled={roomName !== null && roomName !== 'Standard Room'}/>
                   Standard Room
@@ -255,7 +291,7 @@ useEffect(() => {
           <label htmlFor="specialRequests">Special Requests:</label>
           <textarea id="specialRequests" name="specialRequests" value={formData.specialRequests} onChange={handleChange}></textarea>
         </div>
-        <button type="submit">Submit Reservation</button>
+        <button className="book-button" type="submit">Submit Reservation</button>
       </form>
     </div>
   );

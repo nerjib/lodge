@@ -35,6 +35,10 @@ const BookingManager = ({ onClose }) => {
                             <th scope="col" className="px-6 py-3">Check-in</th>
                             <th scope="col" className="px-6 py-3">Check-out</th>
                             <th scope="col" className="px-6 py-3">Payment Status</th>
+                            <th scope="col" className="px-6 py-3">Booking Status</th>
+                            <th scope="col" className="px-6 py-3">Paid Amount</th>
+                            <th scope="col" className="px-6 py-3">Discount</th>
+
                             {/* Add other relevant table headers */}
                             <th scope="col" className="px-6 py-3">Action</th>
                         </tr>
@@ -48,7 +52,11 @@ const BookingManager = ({ onClose }) => {
                                 <td className="px-6 py-4">{booking?.room_types?.join(', ')}</td>
                                 <td className="px-6 py-4">{booking?.check_in}</td>
                                 <td className="px-6 py-4">{booking?.check_out}</td>
-                                <td className="px-6 py-4">{booking?.is_paid ? 'PAID' : 'PENDING'}</td>
+                                <td className="px-6 py-4">{booking?.status ?? 'pending'}</td>
+                                <td className="px-6 py-4">{booking?.booking_status}</td>
+                                <td className="px-6 py-4">{booking?.amount ?? 'Nill' }</td>
+                                <td className="px-6 py-4">{booking?.discount}</td>
+
                                 {/* Add other relevant table data */}
                                 <td className="px-6 py-4">
                                     <button 

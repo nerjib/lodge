@@ -19,18 +19,18 @@ const AboutUsPage = () => {
               />
             </div>
             <div>
-              <p className="text-gray-600 mb-4">
-                Nestled in the heart of nature, our lodge offers a unique blend of comfort and adventure. Whether you're here to relax or explore, we provide an unforgettable experience for all our guests.
+              <p className="text-gray-600 mb-4 mt-4 text-sm">
+                Home away from home.
               </p>
-              <p className="text-gray-600">
-                Our team is dedicated to ensuring your stay is as comfortable and enjoyable as possible. From luxurious accommodations to exciting activities, we have something for everyone.
-              </p>
+              <p className="text-gray-600 text-sm">
+              A seven bedroom apartment and a studio apartment that can be booked for short or longs stays, events and gatherings with fully equipped kitchen, laundry and fully furnished bedrooms and living rooms Nestled in the heart of Kaduna Millenium City, Tranquility lodge offers an unforgettable escape. Our cozy lodge provides the perfect blend of rustic charm and modern amenities, ensuring a relaxing and rejuvenating stay.
+              Whether you're seeking adventure or a getaway, staycation, intimate gathering, you'll find it all here. Our dedicated staff are committed to providing exceptional service and creating a memorable experience for each of our guests.              </p>
             </div>
           </div>
         </section>
 
         {/* History Section */}
-        <section className="mb-16">
+        <section className="mb-16" hidden>
             <h2 className="text-3xl font-bold text-center mb-8">Our History</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
@@ -55,7 +55,7 @@ const AboutUsPage = () => {
             </section>
 
         {/* Mission Section */}
-        <section className="mb-16">
+        <section className="mb-16" hidden>
           <h2 className="text-3xl font-bold text-center mb-8">Our Mission</h2>
           <div className="text-center max-w-2xl mx-auto">
             <p className="text-gray-600">
@@ -65,7 +65,7 @@ const AboutUsPage = () => {
         </section>
 
         {/* Team Section */}
-        <section>
+        <section hidden>
           <h2 className="text-3xl font-bold text-center mb-8">Meet Our Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {/* Team Member 1 */}

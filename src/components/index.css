@@ -36,7 +36,7 @@
   }
   
   .reservation-page button[type="submit"] {
-    background-color: #007bff;
+    background-color: #A86A00;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -46,7 +46,7 @@
   }
   
   .reservation-page button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #b03A00;
   }
 
 header {
@@ -226,7 +226,7 @@ header {
 }
 
 .contact-form button[type="submit"] {
-  background-color: #007bff;
+  background-color: #A86A00;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -236,5 +236,6 @@ header {
 }
 
 .contact-form button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #A86A00;
 }
+
